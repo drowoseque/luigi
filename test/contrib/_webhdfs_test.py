@@ -64,3 +64,14 @@ class TestWebHdfsTarget(unittest.TestCase):
         self.assertEqual(lines[0], 'this is line 1')
         self.assertEqual(lines[1], 'this is line #2')
         input_.close()
+
+    def test_iter_and_enter(self):
+        self.test_write()
+        expected_content = [
+            'this is line 1',
+            'this is line #2'
+        ]
+        with self.target.open('r') as _input:
+            for i, line in enumerate(_input):
+                self.assertEqual(expected_content[i], line)
+
