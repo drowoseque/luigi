@@ -74,4 +74,3 @@ class TestWebHdfsTarget(unittest.TestCase):
         with self.target.open('r') as _input:
             for i, line in enumerate(_input):
                 self.assertEqual(expected_content[i], line)
-
